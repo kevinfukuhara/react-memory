@@ -35,16 +35,19 @@ class Game extends Component{
                     <div className="col s4">
                         <Card 
                             character={this.state.boardPlacement[0]}
+                            handleGuess={this.props.handleGuess}
                         />
                     </div>
                     <div className="col s4">
                         <Card 
                             character={this.state.boardPlacement[1]}
+                            handleGuess={this.props.handleGuess}
                         />
                     </div>
                     <div className="col s4">
                         <Card 
                             character={this.state.boardPlacement[2]}
+                            handleGuess={this.props.handleGuess}
                         />
                         {/* <Card 
                             character={this.state.boardPlacement[2]}
@@ -56,16 +59,19 @@ class Game extends Component{
                     <div className="col s4">
                         <Card 
                             character={this.state.boardPlacement[3]}
+                            handleGuess={this.props.handleGuess}
                         />
                     </div>
                     <div className="col s4">
                         <Card 
                             character={this.state.boardPlacement[4]}
+                            handleGuess={this.props.handleGuess}
                         />
                     </div>
                     <div className="col s4">
                         <Card 
                             character={this.state.boardPlacement[5]}
+                            handleGuess={this.props.handleGuess}
                         />
                     </div>
                 </div>
@@ -74,16 +80,19 @@ class Game extends Component{
                     <div className="col s4">
                         <Card 
                             character={this.state.boardPlacement[6]}
+                            handleGuess={this.props.handleGuess}
                         />
                     </div>
                     <div className="col s4">
                         <Card 
                             character={this.state.boardPlacement[7]}
+                            handleGuess={this.props.handleGuess}
                         />
                     </div>
                     <div className="col s4">
                         <Card 
                             character={this.state.boardPlacement[8]}
+                            handleGuess={this.props.handleGuess}
                         />
                     </div>
                 </div>

@@ -15,6 +15,10 @@ class App extends Component {
     guessStatus:"None"
   }
 
+  handleGuess = id=> {
+    console.log("Triggered HandleGuess method: id - " + id );
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -25,7 +29,15 @@ class App extends Component {
             guessStatus={this.state.guessStatus}
           />
 
-          <Route exact path="/" component={Game} />
+          {/* <Route exact path="/" component={Game} 
+            handleGuess={this.handleGuess}
+          /> */}
+          <Route 
+            path="/"
+            render={(props) => <Game 
+              handleGuess={this.handleGuess}
+            />}
+          />
           {/* <Game /> */}
 
         </Router>
