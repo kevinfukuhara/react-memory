@@ -1,26 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
+// Imported Components Made by me 
+import NavBar from './components/NavBar';
+import Game from './components/Game';
+
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    yourScore: 0,
+    highScore: 0,
+    selection: [],
+    guessStatus:"None"
+  }
+
+  render() {
+    return (
+      <React.Fragment>
+        {/* <Router> */}
+          <NavBar 
+            yourScore={this.state.yourScore}
+            highScore={this.state.highScore}
+            guessStatus={this.state.guessStatus}
+          />
+
+          {/* <Route exact path="/" component={Game} /> */}
+          <Game 
+            selection={this.state.selection}
+            guessStatus={this.state.guessStatus}
+          />
+
+        {/* </Router> */}
+      </React.Fragment>
+    );
+  }
 }
 
 export default App;
