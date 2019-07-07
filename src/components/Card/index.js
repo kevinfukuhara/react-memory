@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 
+import "./card.css"
+
 class Card extends Component{
+    state = {
+        style: {backgroundImage:"url(" + this.props.character.image + ")"}
+    }
 
     render(){
         return(
-
+            <div className="card-item" style={this.state.style} value={this.props.character.id}>
+            </div>
         );
     }
 }
 
-import "./card.css"
+export default Card;

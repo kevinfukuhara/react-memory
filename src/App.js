@@ -18,20 +18,17 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        {/* <Router> */}
+        <Router>
           <NavBar 
             yourScore={this.state.yourScore}
             highScore={this.state.highScore}
             guessStatus={this.state.guessStatus}
           />
 
-          {/* <Route exact path="/" component={Game} /> */}
-          <Game 
-            selection={this.state.selection}
-            guessStatus={this.state.guessStatus}
-          />
+          <Route exact path="/" component={Game} />
+          {/* <Game /> */}
 
-        {/* </Router> */}
+        </Router>
       </React.Fragment>
     );
   }
