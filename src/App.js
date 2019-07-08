@@ -17,6 +17,19 @@ class App extends Component {
 
   handleGuess = id=> {
     console.log("Triggered HandleGuess method: id - " + id );
+
+    // Check if the guess's id already exists in the selection array
+    if(this.state.selection.includes(id)) {
+      // CASE: Incorrect! - User has guessed this before
+      console.log("INCORRECT");
+
+    } else {
+      console.log("CORRECT!");
+      console.log("Trying to shuffle!");
+
+      this.child.reorderBoard();
+
+    }
   }
 
   render() {
@@ -32,10 +45,12 @@ class App extends Component {
           {/* <Route exact path="/" component={Game} 
             handleGuess={this.handleGuess}
           /> */}
+          {/* <Game onRef={ref => (this.child = ref)} /> */}
           <Route 
             path="/"
             render={(props) => <Game 
               handleGuess={this.handleGuess}
+              onRef={ref => (this.child = ref)}
             />}
           />
           {/* <Game /> */}
