@@ -48,10 +48,11 @@ class App extends Component {
           {/* <Game onRef={ref => (this.child = ref)} /> */}
           <Route 
             path="/"
-            render={(props) => <Game 
-              handleGuess={this.handleGuess}
-              onRef={ref => (this.child = ref)}
-            />}
+            render={(props) => 
+              <Game 
+                handleGuess={this.handleGuess}
+                onRef={ref => (this.child = ref)}
+              />}
           />
           {/* <Game /> */}
 
