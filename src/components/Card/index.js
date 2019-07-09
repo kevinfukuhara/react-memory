@@ -17,8 +17,7 @@ class Card extends Component{
     changeImage = image => {
         // Update the state in this component
         this.setState( { style: {backgroundImage:"url(" + image + ")"} } );
-
-        console.log("Changing the image state!")
+        // console.log("Changing the image state!")
     }
 
     render(){
