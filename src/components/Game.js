@@ -5,7 +5,7 @@ import chars from "../card-seeds.json";
 
 class Game extends Component {
     state = {
-        characters: chars,
+        // characters: chars,
         boardPlacement: chars
 
     }
@@ -59,7 +59,8 @@ class Game extends Component {
 
     render() {
         return (
-            <div className="container">
+            // <div className="container">
+            <React.Fragment>
                 <div className="row">
                     <div className="col s4">
                         <Card
@@ -135,7 +136,8 @@ class Game extends Component {
                     </div>
                 </div>
 
-            </div>
+            </React.Fragment>
+            // </div>
 
         )
     }

@@ -12,73 +12,81 @@ class App extends Component {
     yourScore: 0,
     highScore: 0,
     selection: [],
-    guessStatus:"None"
+    guessStatus: ""
   }
 
-  handleGuess = id=> {
-    console.log("Triggered HandleGuess method: id - " + id );
+  handleGuess = id => {
+    console.log("Triggered HandleGuess method: id - " + id);
 
     console.log(this.state.selection);
 
     // Check if the guess's id already exists in the selection array
-    if(this.state.selection.includes(id)) {
+    if (this.state.selection.includes(id)) {
       // CASE: Incorrect! - User has guessed this before
       console.log("INCORRECT");
+       // Send incorrect guess message to the NavBar via the guessStatus state
+       let guessStatus = "Incorrect..."
+       this.setState({ guessStatus });
 
       // Reset user Score
-      let zeroed = 0;
-      this.setState({ yourScore : zeroed });
+      let yourScore = 0;
+      this.setState({ yourScore });
 
       // reset the selection array
-      let newArray = [];
-      this.setState({ selection : newArray })
+      let selection = [];
+      this.setState({ selection })
 
     } else {
       console.log("CORRECT!");
+      // Send correct guess to the NavBar via the guessStatus state
+      let guessStatus = "Correct!"
+      this.setState({ guessStatus });
+
       // Add the user's guess into the selection 
       let newArray = this.state.selection;
       newArray.push(id);
-      this.setState( { selection : newArray } );
+      this.setState({ selection: newArray });
 
       // Add +1 to yourScore
       let yourNewScore = this.state.yourScore;
-      yourNewScore= yourNewScore + 1;
-      this.setState( {yourScore: yourNewScore} )
+      yourNewScore = yourNewScore + 1;
+      this.setState({ yourScore: yourNewScore })
 
       // Compare yourScore to Highscore
-      if(yourNewScore > this.state.highScore) {
-        this.setState({ highScore : yourNewScore });
+      if (yourNewScore > this.state.highScore) {
+        this.setState({ highScore: yourNewScore });
       }
-    } 
-    
+    }
+
     // Shuffle the Board
-    this.child.reorderBoard();      
+    this.child.reorderBoard();
   }
 
   render() {
     return (
       <React.Fragment>
         <Router>
-          <NavBar 
+          <NavBar
             yourScore={this.state.yourScore}
             highScore={this.state.highScore}
             guessStatus={this.state.guessStatus}
           />
 
-          {/* <Route exact path="/" component={Game} 
+          <div className="container">
+            {/* <Route exact path="/" component={Game} 
             handleGuess={this.handleGuess}
           /> */}
-          {/* <Game onRef={ref => (this.child = ref)} /> */}
-          {/* <Game /> */}
-          <Route 
-            path="/"
-            render={(props) => 
-              <Game 
-                handleGuess={this.handleGuess}
-                onRef={ref => (this.child = ref)}
-              />}
-          />
-
+            {/* <Game onRef={ref => (this.child = ref)} /> */}
+            {/* <Game /> */}
+            <Route
+              path="/"
+              render={(props) =>
+                <Game
+                  handleGuess={this.handleGuess}
+                  onRef={ref => (this.child = ref)}
+                />}
+            />
+          </div>
         </Router>
       </React.Fragment>
     );
