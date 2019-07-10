@@ -18,18 +18,41 @@ class App extends Component {
   handleGuess = id=> {
     console.log("Triggered HandleGuess method: id - " + id );
 
+    console.log(this.state.selection);
+
     // Check if the guess's id already exists in the selection array
     if(this.state.selection.includes(id)) {
       // CASE: Incorrect! - User has guessed this before
       console.log("INCORRECT");
 
+      // Reset user Score
+      let zeroed = 0;
+      this.setState({ yourScore : zeroed });
+
+      // reset the selection array
+      let newArray = [];
+      this.setState({ selection : newArray })
+
     } else {
       console.log("CORRECT!");
-      console.log("Trying to shuffle!");
+      // Add the user's guess into the selection 
+      let newArray = this.state.selection;
+      newArray.push(id);
+      this.setState( { selection : newArray } );
 
-      this.child.reorderBoard();
+      // Add +1 to yourScore
+      let yourNewScore = this.state.yourScore;
+      yourNewScore= yourNewScore + 1;
+      this.setState( {yourScore: yourNewScore} )
 
-    }
+      // Compare yourScore to Highscore
+      if(yourNewScore > this.state.highScore) {
+        this.setState({ highScore : yourNewScore });
+      }
+    } 
+    
+    // Shuffle the Board
+    this.child.reorderBoard();      
   }
 
   render() {
@@ -46,6 +69,7 @@ class App extends Component {
             handleGuess={this.handleGuess}
           /> */}
           {/* <Game onRef={ref => (this.child = ref)} /> */}
+          {/* <Game /> */}
           <Route 
             path="/"
             render={(props) => 
@@ -54,7 +78,6 @@ class App extends Component {
                 onRef={ref => (this.child = ref)}
               />}
           />
-          {/* <Game /> */}
 
         </Router>
       </React.Fragment>
